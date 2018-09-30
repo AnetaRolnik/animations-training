@@ -1,0 +1,217 @@
+body {
+  margin: 0;
+}
+
+.test {
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+//animacja 0
+.test0 {
+  background: #eee;
+  height: 80vh;
+  overflow: hidden;
+
+  div {
+    width: 100%;
+    height: 100%;
+    background-image: url(https://images.pexels.com/photos/210186/pexels-photo-210186.jpeg?auto=compress&cs=tinysrgb&h=650&w=940);
+    background-size: cover;
+    background-attachment: fixed;
+    transform-origin: 50% 100%;
+  }
+}
+
+//transition
+.test1 {
+  background: #eee;
+
+  button {
+    border: 2px solid crimson;
+    color: crimson;
+    padding: 20px 80px;
+    background: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 50px;
+    transition: 1s;
+  }
+
+  button:hover {
+    transform: scale(1.2);
+    box-shadow: inset 0 0 0 60px crimson, 0 0 0 5px rgba(crimson, 0.4);
+    color: white;
+  }
+
+}
+
+//animacja 1
+.test2 {
+  background: orangered;
+
+  .loading {
+    width: 40px;
+    height: 40px;
+    border:  3px solid rgba(white, 0.4);
+    border-radius: 50%;
+    border-right-color: white;
+    animation: test2Anim 0.7s 0s infinite linear;
+  }
+
+}
+
+@keyframes test2Anim{
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+//animacja 2
+.test3 {
+  background: indigo;
+
+  .loading {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    animation: test3AnimBox 1s 0s infinite alternate ease-in-out;
+
+    &:after {
+      content: '';
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: white;
+      display: block;
+      position: absolute;
+      right: -10px;
+      top: calc(50% - 10px);
+      animation: test3AnimDot 1s 0s infinite alternate ease-in-out;
+    }
+  }
+}
+
+@keyframes test3AnimBox {
+  100% {
+    transform: rotate(-180deg);
+  }
+}
+
+@keyframes test3AnimDot {
+  0% {
+    transform: scale(1,0.7);
+  }
+  50% {
+    transform: scale(0.7,1);
+  }
+  100% {
+    transform: scale(1,0.7);
+  }
+}
+
+//animacja 3
+.test4 {
+  background: greenyellow;
+
+  .loading {
+    width: 150px;
+    height: 70px;
+    display: flex;
+
+    span {
+      background: white;
+      flex-grow: 1;
+      margin: 1px;
+      transform-origin: 50% 100%;
+      animation: test4BarAnim 1s 0s infinite alternate;
+
+      @for $i from 1 through 10 {
+        &:nth-of-type(#{$i}) {
+          animation-delay: (0.2*$i)*1s;
+        }
+      }
+    }
+  }
+}
+
+@keyframes test4BarAnim {
+  100% {
+    transform: scaleY(0);
+  }
+}
+
+//animacja 4
+.test5 {
+  background: gold;
+
+  .nav-toggle {
+    width: 80px;
+    height: 80px;
+    background: none;
+    position: relative;
+    border: 0;
+    outline: none;
+
+    span {
+      background: white;
+      height: 8px;
+      width: 50px;
+      display: block;
+      border-radius: 2px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    span:nth-of-type(2){
+      margin-top: -10px;
+    }
+    span:nth-of-type(3){
+      margin-top: 10px;
+    }
+  }
+
+  .nav-toggle.anim {
+    span:nth-of-type(1) {
+      animation: animSpan1 0.3s 0.5s 1 forwards;
+    }
+    span:nth-of-type(2) {
+      animation: animSpan2 1s 0s 1 forwards;
+    }
+    span:nth-of-type(3) {
+      animation: animSpan3 1s 0s 1 forwards;
+    }
+  }
+}
+
+@keyframes animSpan1 {
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes animSpan2 {
+  50% {
+    margin-top: 0;
+    transform: translate(-50%, -50%) rotate(0);
+  }
+  100% {
+    margin-top: 0;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+}
+
+@keyframes animSpan3 {
+  50% {
+    margin-top: 0;
+    transform: translate(-50%, -50%) rotate(0);
+  }
+  100% {
+    margin-top: 0;
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+}

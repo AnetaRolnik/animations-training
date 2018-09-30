@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/main.css">
+  <title>Animacje</title>
+</head>
+<body>
+
+  <div class="test test0">
+    <div></div>
+  </div>
+
+  <div class="test test1">
+    <button>Kliknij</button>
+  </div>
+
+  <div class="test test2">
+    <div class="loading"></div>
+  </div>
+
+  <div class="test test3">
+    <div class="loading"></div>
+  </div>
+
+  <div class="test test4">
+    <div class="loading">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+  <div class="test test5">
+    <button aria-label="Menu" class="nav-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <script type="text/javascript">
+    const btn = document.querySelector(".nav-toggle");
+    btn.addEventListener("click", function(){
+      btn.classList.toggle('anim');
+    })
+
+    const elem = document.querySelector(".test0 div");
+    window.addEventListener('scroll', function(){
+      const scale=window.scrollY/1000;
+      elem.style.transform = `scale(${1+scale})`
+      elem.style.backgroundPositionY = `-${window.scrollY*0.1}px`
+    })
+
+  </script>
+
+</body>
+</html>
